@@ -12,7 +12,7 @@ const AdminAppointment = () => {
   
   const fetchAppointments = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/appointments');
+      const res = await axios.get('https://sundayluxury.onrender.com/appointments');
       setAppointments(res.data);
     } catch (error) {
       console.error('Error fetching appointments:', error);
@@ -21,7 +21,7 @@ const AdminAppointment = () => {
 
   const handleApprove = async (id) => {
     try {
-      await axios.put(`http://localhost:5000/appointments/${id}`, { status: 'approved' });
+      await axios.put(`https://sundayluxury.onrender.com/appointments/${id}`, { status: 'approved' });
       fetchAppointments();
     } catch (error) {
       console.error('Error approving appointment:', error);
@@ -30,7 +30,7 @@ const AdminAppointment = () => {
 
   const handleCancel = async (id) => {
     try {
-      await axios.put(`http://localhost:5000/appointments/${id}`, { status: 'cancelled' });
+      await axios.put(`https://sundayluxury.onrender.com/appointments/${id}`, { status: 'cancelled' });
       fetchAppointments();
     } catch (error) {
       console.error('Error cancelling appointment:', error);

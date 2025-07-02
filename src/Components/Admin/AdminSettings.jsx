@@ -19,7 +19,7 @@ const AdminSettings = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.put('http://localhost:5000/admin/update', {
+      const res = await axios.put('https://sundayluxury.onrender.com/admin/update', {
         currentEmail,
         currentPassword,
         newEmail,

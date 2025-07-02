@@ -14,7 +14,7 @@ const AdminEditService = () => {
 
   const fetchServices = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/services');
+      const res = await axios.get('https://sundayluxury.onrender.com/services');
       setServices(res.data);
     } catch (err) {
       console.error('Failed to fetch services:', err);
@@ -24,7 +24,7 @@ const AdminEditService = () => {
   const handleDelete = async (id) => {
     if (!window.confirm('Are you sure you want to delete this service?')) return;
     try {
-      await axios.delete(`http://localhost:5000/services/${id}`);
+      await axios.delete(`https://sundayluxury.onrender.com/services/${id}`);
       fetchServices();
     } catch (err) {
       console.error('Failed to delete:', err);
@@ -51,7 +51,7 @@ const AdminEditService = () => {
 
     try {
       console.log("Updating service ID:", editingService);
-      await axios.put(`http://localhost:5000/services/${editingService}`, {
+      await axios.put(`https://sundayluxury.onrender.com/services/${editingService}`, {
         title,
         description,
         price: Number(price),
@@ -107,7 +107,7 @@ const AdminEditService = () => {
                 {service.images?.map((img, idx) => (
                   <img
                     key={idx}
-                    src={`http://localhost:5000${img}`}
+                    src={`https://sundayluxury.onrender.com${img}`}
                     alt="service"
                     className="thumb"
                   />

@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
+import axios from 'axios';
 // User Pages
 import LandingPage from './Components/LandingPage/LandingPage';
 import Services from './Components/Services/Services';
@@ -16,8 +16,29 @@ import AdminEditService from './Components/AdminEditService/AdminEditService';
 import AdminStatistic from './Components/AdminStatistic/AdminStatistic';
 import ProtectedAdminRoute from './Components/Admin/ProtectedAdminRoute';
 import AdminSettings from './Components/Admin/AdminSettings';
+import { useEffect } from 'react';
+
+
 
 function App() {
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const res = await axios.get('https://sundayluxury.onrender.com/health/check');
+        console.log('Health check:', res.data);
+      } catch (error) {
+        console.error('Error Health:', error);
+      }
+    };
+
+    fetchServices(); // Initial call on load
+
+    const intervalId = setInterval(fetchServices, 10 * 60 * 1000); // Every 10 minutes
+
+    // Clear interval on unmount
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
     <Router>
       <Routes>

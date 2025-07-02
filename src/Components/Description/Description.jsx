@@ -12,7 +12,7 @@ const Description = () => {
   useEffect(() => {
     const fetchService = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/services/${id}`);
+        const res = await axios.get(`https://sundayluxury.onrender.com/services/${id}`);
         setService(res.data);
       } catch (err) {
         console.error(err);
@@ -30,7 +30,7 @@ const Description = () => {
       <Navbar />
       <div className="description-container">
         <img
-          src={`http://localhost:5000${service.images?.[0]}`}
+          src={`https://sundayluxury.onrender.com${service.images?.[0]}`}
           alt={service.title}
           className="main-image"
           onError={(e) => (e.target.src = 'https://via.placeholder.com/200x150')}
@@ -41,7 +41,7 @@ const Description = () => {
             {service.images.slice(1).map((img, index) => (
               <img
                 key={index}
-                src={`http://localhost:5000${img}`}
+                src={`https://sundayluxury.onrender.com${img}`}
                 alt={`Slide ${index}`}
                 className="slider-img"
                 onError={(e) => (e.target.src = 'https://via.placeholder.com/200x150')}

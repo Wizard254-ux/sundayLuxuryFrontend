@@ -23,7 +23,7 @@ const LoginRegister = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/auth/register', form);
+      const res = await axios.post('https://sundayluxury.onrender.com/auth/register', form);
       setMessage(res.data.message || 'Registered successfully');
       setIsLogin(true);
     } catch (err) {
@@ -34,7 +34,7 @@ const LoginRegister = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/auth/login', {
+      const res = await axios.post('https://sundayluxury.onrender.com/auth/login', {
         email: form.email,
         password: form.password
       });

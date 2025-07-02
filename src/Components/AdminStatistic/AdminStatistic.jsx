@@ -39,7 +39,7 @@ const AdminStatistic = () => {
     // Fetch live stats from backend
     const fetchStats = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/stats');
+        const res = await axios.get('https://sundayluxury.onrender.com/stats');
         setStats(res.data);
       } catch (err) {
         console.error('Failed to fetch statistics:', err);

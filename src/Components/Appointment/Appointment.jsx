@@ -74,7 +74,7 @@ const Appointment = () => {
         return;
       }
 
-      await axios.post('http://localhost:5000/appointments', formData, {
+      await axios.post('https://sundayluxury.onrender.com/appointments', formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -10,7 +10,7 @@ const Services = ({ showAll = true }) => {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/services');
+        const res = await axios.get('https://sundayluxury.onrender.com/services');
         setServices(res.data);
       } catch (error) {
         console.error('Error fetching services:', error);
@@ -37,7 +37,7 @@ const Services = ({ showAll = true }) => {
           {visibleServices.map((service) => {
             const imagePath = service.images?.[0];
             const imageUrl = imagePath
-              ? `http://localhost:5000/uploads/${encodeURIComponent(imagePath.split('/').pop())}`
+              ? `https://sundayluxury.onrender.com/uploads/${encodeURIComponent(imagePath.split('/').pop())}`
               : '/no-image.jpg'; // fallback to local image
 
             return (
