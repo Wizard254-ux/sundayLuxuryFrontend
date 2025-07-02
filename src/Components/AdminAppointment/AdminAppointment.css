@@ -1,0 +1,132 @@
+.admin-appointment-container {
+  padding: 2rem;
+  background-color: #f4f6f8;
+  font-family: 'Segoe UI', sans-serif;
+  min-height: 100vh;
+}
+
+h2 {
+  margin-bottom: 1.2rem;
+  color: #222;
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Table Styling */
+.appointment-table {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  font-size: 0.9rem;
+}
+
+th, td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e0e0e0;
+  text-align: left;
+}
+
+th {
+  background-color: #f1f1f1;
+  color: #333;
+  font-weight: 600;
+}
+
+tr:hover {
+  background-color: #fafafa;
+}
+
+/* Buttons */
+td button {
+  padding: 0.4rem 0.8rem;
+  margin-right: 0.4rem;
+  font-size: 0.78rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.2s ease;
+}
+
+.approve-btn {
+  background-color: #28a745;
+}
+
+.approve-btn:hover {
+  background-color: #218838;
+}
+
+.cancel-btn {
+  background-color: #dc3545;
+}
+
+.cancel-btn:hover {
+  background-color: #c82333;
+}
+
+/* Status Tags */
+.status-tag {
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+.status-tag.pending {
+  color: #856404;
+  background-color: #fff3cd;
+}
+
+.status-tag.approved {
+  color: #155724;
+  background-color: #d4edda;
+}
+
+.status-tag.cancelled {
+  color: #721c24;
+  background-color: #f8d7da;
+}
+
+/* Responsive Table */
+@media (max-width: 768px) {
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tr {
+    margin-bottom: 1rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    padding: 1rem;
+  }
+
+  td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 0;
+    border: none;
+  }
+
+  td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: #555;
+    margin-right: 1rem;
+    flex-basis: 40%;
+  }
+
+  td button {
+    margin-top: 0.3rem;
+  }
+}

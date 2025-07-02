@@ -1,0 +1,78 @@
+/* === Hero Section === */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* 👈 Full screen height */
+  overflow: hidden;
+}
+
+/* === Hero Image === */
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: fade 1s ease-in-out;
+}
+
+/* === Text Overlay === */
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+  padding: 0 1rem;
+  max-width: 90%;
+}
+
+/* === Headline Text === */
+.hero-text h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+/* === Subtext === */
+.hero-text p {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* === Fade Animation === */
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* === Responsive Media Queries === */
+@media (max-width: 1024px) {
+  .hero-text h1 {
+    font-size: 2.4rem;
+  }
+
+  .hero-text p {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-text h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero-text p {
+    font-size: 0.95rem;
+  }
+}

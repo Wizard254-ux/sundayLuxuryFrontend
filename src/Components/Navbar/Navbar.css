@@ -1,0 +1,142 @@
+/* === General Navbar Styling === */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 2rem;
+  background-color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+/* === Logo Styling === */
+.logo-img {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.05);
+}
+
+/* === Menu List Styling === */
+.navbar-menu {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.navbar-menu li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar-menu li a:hover {
+  color: #29AB87;
+}
+
+/* === Book Button Styling (Desktop) === */
+.navbar-book-desktop button {
+  background-color: #29AB87;
+  color: white;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-book-desktop button:hover {
+  background-color: #208765;
+}
+
+/* === Navbar Actions Wrapper (Book, User Icon, Toggle) === */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* === User Icon Styling === */
+.navbar-user-icon {
+  cursor: pointer;
+  font-size: 1.4rem;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.navbar-user-icon:hover {
+  color: #29AB87;
+}
+
+/* === Hamburger Toggle === */
+.navbar-toggle {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #29AB87;
+}
+
+/* === Book Button Styling (Mobile) === */
+.navbar-book-mobile {
+  display: none;
+}
+
+.navbar-book-mobile button {
+  background-color: #29AB87;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.4rem;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+}
+
+.navbar-book-mobile button:hover {
+  background-color: #208765;
+}
+
+/* === Responsive Styling === */
+@media (max-width: 768px) {
+  .navbar-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    flex-direction: column;
+    background-color: white;
+    width: 100%;
+    padding: 1rem 0;
+    display: none;
+  }
+
+  .navbar-menu.active {
+    display: flex;
+  }
+
+  .navbar-book-desktop {
+    display: none;
+  }
+
+  .navbar-book-mobile {
+    display: block;
+    text-align: center;
+  }
+
+  .navbar-menu li {
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  .navbar-toggle {
+    display: block;
+  }
+}

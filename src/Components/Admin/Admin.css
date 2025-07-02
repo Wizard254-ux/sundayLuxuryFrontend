@@ -1,0 +1,100 @@
+/* === Admin Navbar Styling === */
+.admin-navbar {
+  background-color: #111;
+  color: #fff;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.admin-navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Logo */
+.admin-logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* Toggle Button */
+.admin-toggle {
+  display: none;
+  font-size: 1.8rem;
+  background: transparent;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+/* Navigation Links */
+.admin-nav-links {
+  display: flex;
+  gap: 1.8rem;
+  list-style: none;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.admin-nav-links li a,
+.admin-nav-links li .logout-btn {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: color 0.3s ease-in-out;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.admin-nav-links li a:hover,
+.admin-nav-links li .logout-btn:hover {
+  color: #00bcd4;
+}
+
+/* === Mobile Styling === */
+@media (max-width: 768px) {
+  .admin-toggle {
+    display: block;
+  }
+
+  .admin-nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    display: none;
+    margin-top: 1rem;
+    padding: 1rem 0;
+    background-color: #1a1a1a;
+    border-top: 1px solid #333;
+  }
+
+  .admin-nav-links.open {
+    display: flex;
+  }
+
+  .admin-nav-links li {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #333;
+  }
+
+  .admin-nav-links li:first-child {
+    border-top: none;
+  }
+
+  .admin-nav-links li a,
+  .admin-nav-links li .logout-btn {
+    width: 100%;
+    display: block;
+    text-align: left;
+  }
+}

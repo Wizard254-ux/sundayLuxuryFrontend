@@ -1,0 +1,147 @@
+/* Full width navbar */
+.admin-edit-container > .admin-navbar {
+  width: 100%;
+  position: relative;
+  left: 0;
+  right: 0;
+}
+
+/* Main container */
+.admin-edit-container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 1rem;
+  background: #fff;
+  color: #000;
+}
+
+/* Section heading */
+.admin-edit-container h2 {
+  text-align: center;
+  margin: 2rem 0;
+  font-size: 2rem;
+  color: #000;
+}
+
+/* Service card */
+.admin-service-card {
+  background: #fff;
+  color: #000;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+/* Titles and text */
+.admin-service-card h3 {
+  margin-bottom: 0.5rem;
+  color: #000;
+}
+
+.admin-service-card p {
+  margin-bottom: 1rem;
+  color: #111;
+}
+
+/* Images */
+.image-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.thumb {
+  width: 100px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 5px;
+  border: 1px solid #444;
+}
+
+/* Button group */
+.action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.action-buttons button {
+  padding: 0.5rem 1rem;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.action-buttons button:hover {
+  background: #333;
+}
+
+.action-buttons button:last-child {
+  background: #fff;
+  color: #000;
+  border: 1px solid #000;
+}
+
+.action-buttons button:last-child:hover {
+  background: #f2f2f2;
+}
+
+/* Edit form styling */
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.edit-form input,
+.edit-form textarea {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #333;
+  border-radius: 5px;
+  font-size: 1rem;
+  background: #fff;
+  color: #000;
+}
+
+/* Only increase height of description field */
+.edit-form textarea[name="description"] {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.edit-form button {
+  padding: 0.5rem 1rem;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.edit-form button:hover {
+  background: #333;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  .thumb {
+    width: 100%;
+    height: auto;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .action-buttons button,
+  .edit-form button {
+    width: 100%;
+  }
+}

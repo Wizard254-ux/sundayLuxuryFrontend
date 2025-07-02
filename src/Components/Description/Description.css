@@ -1,0 +1,148 @@
+.description-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.main-image {
+  width: 100%;
+  max-height: 450px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease-in-out;
+}
+
+/* SLIDER CONTAINER */
+.image-slider {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 0.5rem;
+}
+
+/* Hide scrollbar on WebKit browsers */
+.image-slider::-webkit-scrollbar {
+  display: none;
+}
+.image-slider {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+/* SLIDER IMAGE STYLING */
+.slider-img {
+  flex: 0 0 auto;
+  width: 220px;
+  height: 150px;
+  border-radius: 8px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.slider-img:hover {
+  transform: scale(1.05);
+}
+
+/* TEXT SECTION */
+.description-content {
+  padding: 1rem;
+  text-align: left;
+}
+
+.description-content h1 {
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+
+.description-section {
+  margin-top: 2rem;
+}
+
+.description-section h2 {
+  font-size: 1.4rem;
+  margin-bottom: 0.6rem;
+  color: #444;
+}
+
+.description-section ul {
+  list-style: none;
+  padding: 0;
+  margin-left: 1rem;
+}
+
+.description-section li {
+  margin-bottom: 0.5rem;
+  padding-left: 1rem;
+  position: relative;
+  font-size: 1rem;
+}
+
+/* Bullet styling */
+.description-section li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #ff7f50;
+  font-weight: bold;
+}
+
+/* NOT FOUND */
+.description-error {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.3rem;
+  color: red;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .slider-img {
+    width: 180px;
+    height: 120px;
+  }
+  .main-image {
+    max-height: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .description-content h1 {
+    font-size: 1.6rem;
+  }
+
+  .slider-img {
+    width: 150px;
+    height: 100px;
+  }
+
+  .main-image {
+    max-height: 280px;
+  }
+
+  .description-section h2 {
+    font-size: 1.2rem;
+  }
+
+  .description-section li {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-image {
+    max-height: 220px;
+  }
+
+  .slider-img {
+    width: 130px;
+    height: 90px;
+  }
+}
