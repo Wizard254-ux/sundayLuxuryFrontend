@@ -16,9 +16,11 @@ const AdminLogin = () => {
     try {
       const res = await axios.post('https://sundayluxury.onrender.com/admin/login', form);
       localStorage.setItem('adminToken', res.data.token);
+      localStorage.setItem('isAdmin', JSON.stringify(true));
       localStorage.setItem('adminEmail', res.data.admin.email);
       navigate('/admin-dashboard');
     } catch (err) {
+      console.log('error ',err)
       alert(err.response?.data?.message || 'Login failed');
     }
   };
