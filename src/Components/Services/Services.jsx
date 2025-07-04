@@ -37,7 +37,6 @@ const Services = ({ showAll = true }) => {
         <div className="services-grid">
           {visibleServices.map((service) => {
             const imagePath = service.images?.[0];
-            console.log('img path', imagePath)
             const imageUrl = imagePath
               ? `${imagePath}`
               : ''; // fallback to local image
