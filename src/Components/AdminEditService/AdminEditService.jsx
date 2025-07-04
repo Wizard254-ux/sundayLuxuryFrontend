@@ -15,7 +15,7 @@ const AdminEditService = () => {
   const fetchServices = async () => {
     try {
       const res = await axios.get('https://sundayluxury.onrender.com/services');
-      setServices(res.data);
+      setServices('hello',res.data);
     } catch (err) {
       console.error('Failed to fetch services:', err);
     }
@@ -107,7 +107,7 @@ const AdminEditService = () => {
                 {service.images?.map((img, idx) => (
                   <img
                     key={idx}
-                    src={`https://sundayluxury.onrender.com${img}`}
+                    src={img}
                     alt="service"
                     className="thumb"
                   />

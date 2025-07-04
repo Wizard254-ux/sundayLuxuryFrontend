@@ -6,23 +6,61 @@ import axios from 'axios';
 
 const Services = ({ showAll = true }) => {
   const [services, setServices] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const res = await axios.get('https://www.sundayluxuryspa.com/services');
-        console.log('fetche dsttervices ',res.data)
-        setServices(res.data);
+        setLoading(true);
+        const res = await axios.get('https://sundayluxury.onrender.com/services');
+        console.log('hello',res)
+        
+        // Check if response data is an array
+        if (Array.isArray(res.data)) {
+          setServices(res.data);
+        } else {
+          console.error('Expected array but got:', typeof res.data, res.data);
+          setServices([]); // fallback to empty array
+        }
       } catch (error) {
         console.error('Error fetching services:', error);
+        setError(error.message);
         setServices([]); // prevent crashing if fetch fails
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchServices();
   }, []);
 
-  const visibleServices = showAll ? services : services.slice(0, 4);
+  // Ensure services is always an array before slicing
+  const visibleServices = showAll 
+    ? (Array.isArray(services) ? services : []) 
+    : (Array.isArray(services) ? services.slice(0, 4) : []);
+
+  if (loading) {
+    return (
+      <>
+        {showAll && <Navbar />}
+        <section className="services-section">
+          <div className="loading">Loading services...</div>
+        </section>
+      </>
+    );
+  }
+
+  if (error) {
+    return (
+      <>
+        {showAll && <Navbar />}
+        <section className="services-section">
+          <div className="error">Error loading services: {error}</div>
+        </section>
+      </>
+    );
+  }
 
   return (
     <>
@@ -35,39 +73,43 @@ const Services = ({ showAll = true }) => {
         </p>
 
         <div className="services-grid">
-          {visibleServices.map((service) => {
-            const imagePath = service.images?.[0];
-            const imageUrl = imagePath
-              ? `${imagePath}`
-              : ''; // fallback to local image
+          {visibleServices.length === 0 ? (
+            <div className="no-services">No services available</div>
+          ) : (
+            visibleServices.map((service) => {
+              const imagePath = service.images?.[0];
+              const imageUrl = imagePath
+                ? `${imagePath}`
+                : ''; // fallback to local image
 
-            return (
-              <div className="service-card" key={service._id}>
-                <Link to={`/description/${service._id}`}>
-                  <img
-                    src={imageUrl}
-                    alt={service.title || 'Service'}
-                    className="service-img"
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src = '/no-image.jpg'; // fallback if image URL fails
-                    }}
-                  />
-                </Link>
-                <div className="service-content">
-                  <h3>{service.title}</h3>
-                  <p>{service.description}</p>
-                  <div className="service-footer">
-                    <span>{service.duration || 'N/A'}</span>
-                    <span>{service.price ? `KES ${service.price}` : 'Price Unavailable'}</span>
+              return (
+                <div className="service-card" key={service._id}>
+                  <Link to={`/description/${service._id}`}>
+                    <img
+                      src={imageUrl}
+                      alt={service.title || 'Service'}
+                      className="service-img"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = '/no-image.jpg'; // fallback if image URL fails
+                      }}
+                    />
+                  </Link>
+                  <div className="service-content">
+                    <h3>{service.title}</h3>
+                    <p>{service.description}</p>
+                    <div className="service-footer">
+                      <span>{service.duration || 'N/A'}</span>
+                      <span>{service.price ? `KES ${service.price}` : 'Price Unavailable'}</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })
+          )}
         </div>
 
-        {!showAll && (
+        {!showAll && visibleServices.length > 0 && (
           <div className="view-more-btn">
             <Link to="/services">View All Services</Link>
           </div>
