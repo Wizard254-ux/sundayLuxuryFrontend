@@ -15,7 +15,7 @@ const AdminEditService = () => {
   const fetchServices = async () => {
     try {
       const res = await axios.get('https://sundayluxury.onrender.com/services');
-      setServices('hello',res.data);
+      setServices(res.data);
     } catch (err) {
       console.error('Failed to fetch services:', err);
     }

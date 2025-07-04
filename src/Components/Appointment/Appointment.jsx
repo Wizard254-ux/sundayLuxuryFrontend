@@ -16,11 +16,83 @@ const Appointment = () => {
     time: '',
   });
 
+  const [openDropdowns, setOpenDropdowns] = useState({});
+
+  // Service categories from the image
+  const serviceCategories = {
+    grooming: {
+      title: "Grooming",
+      services: [
+        { name: "Kids", price: 500 },
+        { name: "Beard", price: 500 },
+        { name: "Adults", price: 1000 },
+        { name: "Hair+Dye", price: 1500 },
+        { name: "Texturizer", price: 1500 }
+      ]
+    },
+    hairDyes: {
+      title: "Hair Dyes",
+      services: [
+        { name: "Colored", price: 2500 },
+        { name: "White", price: 3000 },
+        { name: "Platinum", price: 3000 }
+      ]
+    },
+    mensPedicure: {
+      title: "Men's Pedicure",
+      services: [
+        { name: "Cut & File", price: 600 },
+        { name: "Full Pedicure", price: 2000 }
+      ]
+    },
+    womensPedicureNails: {
+      title: "Women's Pedicure & Nails",
+      services: [
+        { name: "Half Pedicure & Gel", price: 2000 },
+        { name: "Full Pedicure & Gel", price: 3000 },
+        { name: "Gel Polish", price: 1000 },
+        { name: "Builder Gel", price: 2500 },
+        { name: "Acrylics", price: 4500 },
+        { name: "Gum Gel", price: 4000 },
+        { name: "Tips & Gel", price: 2000 },
+        { name: "Stick'ons", price: 1500 },
+        { name: "Art (per finger)", price: 100 }
+      ]
+    },
+    massage: {
+      title: "Massage (Men & Women)",
+      services: [
+        { name: "Aromatherapy - 60mins", price: 5000 },
+        { name: "Swedish Massage - 45mins", price: 3500 },
+        { name: "Swedish Massage - 60mins", price: 5500 },
+        { name: "Swedish Massage - 75mins", price: 7000 },
+        { name: "Swedish Massage - 90mins", price: 8500 },
+        { name: "Deep Tissue - 60mins", price: 6500 },
+        { name: "Reflexology (Foot Only) - 60mins", price: 4500 },
+        { name: "Indian Head Massage - 60mins", price: 3500 },
+        { name: "Relaxation Massage - 60mins", price: 3500 },
+        { name: "Hotstone Massage - 20mins", price: 3500 },
+        { name: "Hotstone Massage - 30mins", price: 4500 },
+        { name: "Hotstone Massage - 40mins", price: 6500 }
+      ]
+    },
+    facials: {
+      title: "Facials",
+      services: [
+        { name: "Scrub", price: 1500 },
+        { name: "Face Steaming", price: 2000 },
+        { name: "Scrub & Face Mask", price: 2000 },
+        { name: "Regular Facial", price: 3000 },
+        { name: "Advanced Facial", price: 3500 }
+      ]
+    }
+  };
+
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (!token) {
       alert('Please log in to book an appointment');
-      navigate('/login'); // Redirect to login page
+      navigate('/login');
     }
   }, [navigate]);
 
@@ -49,6 +121,13 @@ const Appointment = () => {
         [name]: value,
       }));
     }
+  };
+
+  const toggleDropdown = (category) => {
+    setOpenDropdowns(prev => ({
+      ...prev,
+      [category]: !prev[category]
+    }));
   };
 
   const handleSubmit = async (e) => {
@@ -127,16 +206,47 @@ const Appointment = () => {
               onChange={handleChange}
             />
 
-            <div className="service-options">
-              <label>
-                <input type="checkbox" name="service" value="facial" onChange={handleChange} /> Facial
-              </label>
-              <label>
-                <input type="checkbox" name="service" value="massage" onChange={handleChange} /> Massage
-              </label>
-              <label>
-                <input type="checkbox" name="service" value="body" onChange={handleChange} /> Body Treatment
-              </label>
+            <div className="service-selection">
+              <h3>Select Services</h3>
+              <div className="selected-services">
+                {formData.service.length > 0 && (
+                  <div className="selected-count">
+                    Selected: {formData.service.length} service(s)
+                  </div>
+                )}
+              </div>
+              
+              {Object.entries(serviceCategories).map(([categoryKey, category]) => (
+                <div key={categoryKey} className="service-category">
+                  <div 
+                    className="category-header" 
+                    onClick={() => toggleDropdown(categoryKey)}
+                  >
+                    <h4>{category.title}</h4>
+                    <span className={`dropdown-arrow ${openDropdowns[categoryKey] ? 'open' : ''}`}>
+                      ▼
+                    </span>
+                  </div>
+                  
+                  {openDropdowns[categoryKey] && (
+                    <div className="service-options">
+                      {category.services.map((service, index) => (
+                        <label key={index} className="service-item">
+                          <input 
+                            type="checkbox" 
+                            name="service" 
+                            value={`${service.name} - KSh ${service.price}`}
+                            checked={formData.service.includes(`${service.name} - KSh ${service.price}`)}
+                            onChange={handleChange} 
+                          />
+                          <span className="service-name">{service.name}</span>
+                          <span className="service-price">KSh {service.price}</span>
+                        </label>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
 
             <input
