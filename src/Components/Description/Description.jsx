@@ -13,6 +13,7 @@ const Description = () => {
     const fetchService = async () => {
       try {
         const res = await axios.get(`https://sundayluxury.onrender.com/services/${id}`);
+        console.log('description',res.data)
         setService(res.data);
       } catch (err) {
         console.error(err);
@@ -30,10 +31,10 @@ const Description = () => {
       <Navbar />
       <div className="description-container">
         <img
-          src={`https://sundayluxury.onrender.com${service.images?.[0]}`}
+          src={service.images?.[0]}
           alt={service.title}
           className="main-image"
-          onError={(e) => (e.target.src = 'https://via.placeholder.com/200x150')}
+          onError={(e) => (e.target.src = '')}
         />
 
         {service.images.length > 1 && (
@@ -41,10 +42,10 @@ const Description = () => {
             {service.images.slice(1).map((img, index) => (
               <img
                 key={index}
-                src={`https://sundayluxury.onrender.com${img}`}
+                src={img}
                 alt={`Slide ${index}`}
                 className="slider-img"
-                onError={(e) => (e.target.src = 'https://via.placeholder.com/200x150')}
+                onError={(e) => (e.target.src = '')}
               />
             ))}
           </div>
