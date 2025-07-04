@@ -26,7 +26,7 @@ const ContactSection = () => {
           </div>
           <div className="contact-detail">
             <h3>Phone</h3>
-            <p>+254711692522</p>
+            <p>+254725288288</p>
           </div>
           <div className="contact-detail">
             <h3>Hours</h3>
