@@ -21,7 +21,7 @@ const ContactSection = () => {
           <h2>Contact Information</h2>
           <div className="contact-detail">
             <h3>Address</h3>
-            <p>James Gishuru Road near Laviton Mall</p>
+            <p>The Mugumo ,Mwingi road ,kileleshwa</p>
             <p>Lavington district</p>
           </div>
           <div className="contact-detail">
@@ -33,10 +33,7 @@ const ContactSection = () => {
             <p>Monday - Friday: 9:00 AM - 8:00 PM</p>
             <p>Saturday - Sunday: 9:00 AM - 6:00 PM</p>
           </div>
-          <div className="contact-detail">
-            <h3>Email</h3>
-            <p>sundaywellness@gmail.com</p>
-          </div>
+  
         </div>
 
         <div className="book-appointment-card">
