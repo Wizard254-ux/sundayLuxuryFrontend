@@ -27,7 +27,7 @@ const AdminServices = () => {
 
     try {
       setLoading(true);
-      await axios.post('http://localhost:5000/services', formData, {
+      await axios.post('https://sundayluxury.onrender.com/services', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
