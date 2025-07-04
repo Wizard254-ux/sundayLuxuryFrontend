@@ -10,7 +10,8 @@ const Services = ({ showAll = true }) => {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const res = await axios.get('https://sundayluxury.onrender.com/services');
+        const res = await axios.get('https://www.sundayluxuryspa.com/services');
+        console.log('fetche dsttervices ',res.data)
         setServices(res.data);
       } catch (error) {
         console.error('Error fetching services:', error);
@@ -36,9 +37,10 @@ const Services = ({ showAll = true }) => {
         <div className="services-grid">
           {visibleServices.map((service) => {
             const imagePath = service.images?.[0];
+            console.log('img path', imagePath)
             const imageUrl = imagePath
-              ? `https://sundayluxury.onrender.com/uploads/${encodeURIComponent(imagePath.split('/').pop())}`
-              : '/no-image.jpg'; // fallback to local image
+              ? `${imagePath}`
+              : ''; // fallback to local image
 
             return (
               <div className="service-card" key={service._id}>
