@@ -6,6 +6,8 @@ const ReviewsSection = () => {
   const [showForm, setShowForm] = useState(false);
   const [loading, setLoading] = useState(false);
   const [showAllReviews, setShowAllReviews] = useState(false);
+  const [statusMessage, setStatusMessage] = useState('');
+  const [statusType, setStatusType] = useState(''); // 'error', 'success', 'info'
   const [formData, setFormData] = useState({
     name: '',
     treatment: '',
@@ -34,16 +36,59 @@ const ReviewsSection = () => {
     }
   };
 
+  const showStatus = (message, type) => {
+    setStatusMessage(message);
+    setStatusType(type);
+    setTimeout(() => {
+      setStatusMessage('');
+      setStatusType('');
+    }, 5000); // Hide after 5 seconds
+  };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
+
+    // Clear status message when user starts typing in review field
+    if (name === 'review' && statusMessage) {
+      setStatusMessage('');
+      setStatusType('');
+    }
+  };
+
+  const validateForm = () => {
+    // Check if review is too short
+    if (formData.review.trim().length < 10) {
+      showStatus('Review is too short. Please write at least 10 characters.', 'error');
+      return false;
+    }
+
+    // Check if name is empty
+    if (formData.name.trim().length === 0) {
+      showStatus('Please enter your name.', 'error');
+      return false;
+    }
+
+    // Check if treatment is selected
+    if (formData.treatment.trim().length === 0) {
+      showStatus('Please select a treatment.', 'error');
+      return false;
+    }
+
+    return true;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Validate form before submitting
+    if (!validateForm()) {
+      return;
+    }
+
     try {
       setLoading(true);
       const response = await fetch('https://sundayluxury.onrender.com/api/reviews', {
@@ -65,13 +110,13 @@ const ReviewsSection = () => {
           rating: 5
         });
         setShowForm(false);
-        alert('Review submitted successfully!');
+        showStatus('Review submitted successfully!', 'success');
       } else {
-        alert('Error submitting review. Please try again.');
+        showStatus('Error submitting review. Please try again.', 'error');
       }
     } catch (error) {
       console.error('Error submitting review:', error);
-      alert('Error submitting review. Please try again.');
+      showStatus('Error submitting review. Please try again.', 'error');
     } finally {
       setLoading(false);
     }
@@ -103,6 +148,13 @@ const ReviewsSection = () => {
       <p className="reviews-intro">
         Real experiences from our valued guests who found their moment of serenity
       </p>
+      
+      {/* Status Message */}
+      {statusMessage && (
+        <div className={`status-message ${statusType}`}>
+          {statusMessage}
+        </div>
+      )}
       
       <div className="reviews-actions">
         <button 
@@ -175,9 +227,12 @@ const ReviewsSection = () => {
                 value={formData.review}
                 onChange={handleInputChange}
                 required
-                placeholder="Share your experience with us..."
+                placeholder="Share your experience with us... (minimum 10 characters)"
                 rows="4"
               />
+              <div className="character-count">
+                {formData.review.length}/10 characters minimum
+              </div>
             </div>
 
             <div className="form-actions">
