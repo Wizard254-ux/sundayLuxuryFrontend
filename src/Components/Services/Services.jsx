@@ -96,10 +96,9 @@ const Services = ({ showAll = true }) => {
                     />
                   </Link>
                   <div className="service-content">
-                    <h3>{service.title}</h3>
+                    <h3 className='font-semibold'>{service.title}</h3>
                     <p>{service.description}</p>
                     <div className="service-footer">
-                      <span>{service.duration || 'N/A'}</span>
                       <span>{service.price ? `KES ${service.price}` : 'Price Unavailable'}</span>
                     </div>
                   </div>
