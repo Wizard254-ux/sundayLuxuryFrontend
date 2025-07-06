@@ -10,7 +10,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section className="contact-section">
+<section className="contact-section" id="contact">
       <div className="contact-header">
         <h1>Visit Our Sanctuary</h1>
         <p>Ready to begin your journey to wellness? Book your appointment today</p>

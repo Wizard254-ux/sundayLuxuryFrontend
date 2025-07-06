@@ -31,6 +31,9 @@ const AdminNavbar = () => {
            <li>
             <Link to="/admin-edit" onClick={() => setMenuOpen(false)}>AdminEdit</Link>
           </li>
+           <li>
+            <Link to="/admin-reviews" onClick={() => setMenuOpen(false)}>Reviews</Link>
+          </li>
           <li>
             <Link to="/" onClick={() => setMenuOpen(false)}>Logout</Link>
           </li>

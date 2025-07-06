@@ -6,7 +6,7 @@ import Services from './Components/Services/Services';
 import Description from './Components/Description/Description';
 import Appointment from './Components/Appointment/Appointment';
 import LoginRegister from './Components/LoginRegister/LoginRegister';
-
+import './index.css'; // Ensure you have Tailwind CSS set up correctly
 // Admin Pages
 import AdminLogin from './Components/AdminLogin/AdminLogin';
 import AdminDashboard from './Components/Admin/Adim'; // Your admin dashboard component
@@ -16,6 +16,7 @@ import AdminEditService from './Components/AdminEditService/AdminEditService';
 import AdminStatistic from './Components/AdminStatistic/AdminStatistic';
 import ProtectedAdminRoute from './Components/Admin/ProtectedAdminRoute';
 import AdminSettings from './Components/Admin/AdminSettings';
+import AdminReviewsPage from './Components/AdminReviewPage';
 import { useEffect } from 'react';
 
 
@@ -58,6 +59,14 @@ function App() {
           element={
             <ProtectedAdminRoute>
               <AdminDashboard />
+            </ProtectedAdminRoute>
+          }
+        />
+        <Route
+          path="/admin-reviews"
+          element={
+            <ProtectedAdminRoute>
+              <AdminReviewsPage/>
             </ProtectedAdminRoute>
           }
         />

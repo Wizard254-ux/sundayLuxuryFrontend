@@ -88,13 +88,13 @@ const Appointment = () => {
     }
   };
 
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      alert('Please log in to book an appointment');
-      navigate('/login');
-    }
-  }, [navigate]);
+  // useEffect(() => {
+  //   const token = localStorage.getItem('token');
+  //   if (!token) {
+  //     alert('Please log in to book an appointment');
+  //     navigate('/login');
+  //   }
+  // }, [navigate]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -146,16 +146,10 @@ const Appointment = () => {
     }
 
     try {
-      const token = localStorage.getItem('token');
-      if (!token) {
-        alert('You must be logged in.');
-        navigate('/login');
-        return;
-      }
+   
 
       await axios.post('https://sundayluxury.onrender.com/appointments', formData, {
         headers: {
-          Authorization: `Bearer ${token}`,
         },
       });
 
