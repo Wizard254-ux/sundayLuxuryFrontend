@@ -21,7 +21,7 @@ const ContactSection = () => {
           <h2>Contact Information</h2>
           <div className="contact-detail">
             <h3>Address</h3>
-            <p>The Mugumo ,Mwingi road ,kileleshwa</p>
+            <p>@The Mugumo, Mwingi Road, kileleshwa, Nairobi</p>
             <p>Lavington district</p>
           </div>
           <div className="contact-detail">
@@ -29,9 +29,11 @@ const ContactSection = () => {
             <p>+254725288288</p>
           </div>
           <div className="contact-detail">
-            <h3>Hours</h3>
-            <p>Monday - Friday: 9:00 AM - 8:00 PM</p>
-            <p>Saturday - Sunday: 9:00 AM - 6:00 PM</p>
+            <h3>Opening Hours</h3>
+            <p>Monday - Friday : 9:00 AM - 9:00 PM</p>
+            <p>Saturday : 8:30 AM - 9:00 PM</p>
+            <p>Sunday: 10:00 AM - 8:30 PM</p>
+
           </div>
   
         </div>

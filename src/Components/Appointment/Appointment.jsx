@@ -140,14 +140,13 @@ const Appointment = () => {
       return;
     }
 
-    if (!/^\+2547\d{8}$/.test(phone)) {
-      alert('Phone number must be in format +2547XXXXXXXX');
+    // Updated regex to allow both +2547 and +2541 prefixes
+    if (!/^\+254[17]\d{8}$/.test(phone)) {
+      alert('Phone number must be in format +2547XXXXXXXX or +2541XXXXXXXX');
       return;
     }
 
     try {
-   
-
       await axios.post('https://sundayluxury.onrender.com/appointments', formData, {
         headers: {
         },
@@ -174,7 +173,7 @@ const Appointment = () => {
       <section className="appointment-section">
         <div className="appointment-container">
           <h1>Book Your Appointment</h1>
-          <form onSubmit={handleSubmit} className="appointment-form">
+          <form onSubmit={handleSubmit} className="appointment-form px-3">
             <input
               type="text"
               name="name"
@@ -186,7 +185,7 @@ const Appointment = () => {
             <input
               type="tel"
               name="phone"
-              placeholder="e.g. +254712345678"
+              placeholder="e.g. +254712345678 or +254112345678"
               required
               value={formData.phone}
               onChange={handleChange}
@@ -242,7 +241,7 @@ const Appointment = () => {
                 </div>
               ))}
             </div>
-
+             <span className="ml-2">Date</span>
             <input
               type="date"
               name="date"
@@ -252,6 +251,7 @@ const Appointment = () => {
               value={formData.date}
               onChange={handleChange}
             />
+            <span className="ml-2">Time</span>
             <input
               type="time"
               name="time"

@@ -1,36 +1,37 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Hero.css';
-import img1 from '../../assets/hair.jpeg';
-import img2 from '../../assets/entrance.jpeg';
-import img3 from '../../assets/picture 2.jpeg';
-import img4 from '../../assets/picture.jpeg';
-import img5 from '../../assets/meza.jpeg';
+import img1 from '../../assets/Hero1.jpg';
+import img2 from '../../assets/Hero2.jpg';
+import img3 from '../../assets/Hero3.jpg';
+import img4 from '../../assets/Hero4.jpg';
+import img5 from '../../assets/Hero6.jpg';
+
 
 const slides = [
   {
     image: img1,
-    heading: "Relax Your Mind",
+    heading: "Welcome",
     subtext: "Discover serenity and peace in every touch",
   },
   {
     image: img2,
-    heading: "Premium Beauty Care",
-    subtext: "Where elegance meets expertise",
+    heading: "Indulge",
+    subtext: "Perfect grooming for that Stylish Look",
   },
   {
     image: img3,
-    heading: "Gentlemen’s Spa",
-    subtext: "Tailored massage experiences for men",
+    heading: "Rejuvenate",
+    subtext: "Soothing experience combined with Expert Care",
   },
   {
     image: img4,
-    heading: "Glow Naturally",
-    subtext: "Skincare that brings out your best",
+    heading: "Unwind",
+    subtext: "Relax your body, Clear your Mind, Uplift your Spirit",
   },
   {
     image: img5,
-    heading: "Rejuvenate with Us",
-    subtext: "From stress to bliss in one visit",
+    heading: "Refresh",
+    subtext: "Pampered Care. Expert Touch.",
   },
 ];
 
