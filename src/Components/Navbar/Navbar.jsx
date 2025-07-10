@@ -16,7 +16,24 @@ const Navbar = () => {
   };
 
   const handleNavigate = (path, hash = '') => {
-    navigate(`${path}${hash}`);
+    if (path === '/' && !hash) {
+      // For home navigation, scroll to top
+      navigate('/');
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 100);
+    } else if (hash) {
+      // For hash navigation, navigate then scroll to section
+      navigate(`${path}${hash}`);
+      setTimeout(() => {
+        const element = document.getElementById(hash.substring(1));
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    } else {
+      navigate(path);
+    }
     setIsOpen(false);
   };
 

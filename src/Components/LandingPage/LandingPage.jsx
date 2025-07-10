@@ -12,43 +12,44 @@ const LandingPage = () => {
       const hash = window.location.hash;
       
       if (hash) {
-        // Remove the # from the hash
         const sectionId = hash.substring(1);
         
-        // Debug logging
-        console.log('Hash found:', hash);
-        console.log('Looking for element with ID:', sectionId);
-        
-        // Find the element with the matching ID
-        const element = document.getElementById(sectionId);
+        // Try to find element immediately
+        let element = document.getElementById(sectionId);
         
         if (element) {
-          console.log('Element found, scrolling to:', element);
-          // Scroll to the element with smooth behavior
           element.scrollIntoView({
             behavior: 'smooth',
             block: 'start'
           });
         } else {
-          console.log('Element not found with ID:', sectionId);
-          // List all elements with IDs for debugging
-          const allElementsWithIds = document.querySelectorAll('[id]');
-          console.log('Available elements with IDs:', Array.from(allElementsWithIds).map(el => el.id));
+          // If element not found, wait a bit for components to render
+          setTimeout(() => {
+            element = document.getElementById(sectionId);
+            if (element) {
+              element.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+              });
+            }
+          }, 200);
         }
+      } else {
+        // If no hash, scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     };
 
-    // Handle initial page load
-    handleScrollToSection();
+    // Handle initial page load with delay to ensure components are rendered
+    setTimeout(handleScrollToSection, 100);
 
-    // Handle hash changes (when user clicks links or manually changes URL)
+    // Handle hash changes
     const handleHashChange = () => {
-      handleScrollToSection();
+      setTimeout(handleScrollToSection, 50);
     };
 
     window.addEventListener('hashchange', handleHashChange);
 
-    // Cleanup event listener on component unmount
     return () => {
       window.removeEventListener('hashchange', handleHashChange);
     };
@@ -57,7 +58,9 @@ const LandingPage = () => {
   return (
     <div className="landing-page">
       <Navbar />
-      <Hero />
+      <div id="home">
+        <Hero />
+      </div>
       <Services showAll={false} />
       <ContactSection />
       <ReviewsSection />
