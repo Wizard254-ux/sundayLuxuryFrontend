@@ -22,7 +22,6 @@ const ContactSection = () => {
           <div className="contact-detail">
             <h3>Address</h3>
             <p>@The Mugumo, Mwingi Road, kileleshwa, Nairobi</p>
-            <p>Lavington district</p>
           </div>
           <div className="contact-detail">
             <h3>Phone</h3>
