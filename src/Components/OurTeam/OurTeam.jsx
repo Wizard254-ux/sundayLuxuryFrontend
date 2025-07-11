@@ -16,7 +16,7 @@ const OurTeam = () => {
     },
     {
       id: 2,
-      name: "Chris",
+      name: "Josh",
       role: "Hair Grooming Stylist",
       image: chrisImage, // Use the imported image
       description: "Expert in modern hair styling and color techniques"
