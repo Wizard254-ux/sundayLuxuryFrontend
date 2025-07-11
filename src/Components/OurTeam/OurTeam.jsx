@@ -12,7 +12,7 @@ const OurTeam = () => {
       name: "Sarah Johnson",
       role: "Massage Therapist & Beautician",
       image: joyImage, // Use the imported image
-      description: "Skilled in therapeutic massage and beauty treatments, delivering personalized care and relaxation."
+      description: "Skilled in therapeutic massage and beauty treatments, specializing in holistic therapy and wellness practices."
     },
     {
       id: 2,
