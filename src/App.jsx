@@ -6,6 +6,8 @@ import Services from './Components/Services/Services';
 import Description from './Components/Description/Description';
 import Appointment from './Components/Appointment/Appointment';
 import LoginRegister from './Components/LoginRegister/LoginRegister';
+import ReviewsPage from './Components/ReviewsPage/ReviewsPage';
+import ContactPage from './Components/ContactPage/ContactPage';
 import './index.css'; // Ensure you have Tailwind CSS set up correctly
 // Admin Pages
 import AdminLogin from './Components/AdminLogin/AdminLogin';
@@ -47,6 +49,8 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/appointment" element={<Appointment />} />
         <Route path="/services" element={<Services showAll={true} />} />
+        <Route path="/reviews" element={<ReviewsPage />} />
+        <Route path="/contact" element={<ContactPage />} />
         <Route path="/description/:id" element={<Description />} />
         <Route path="/login" element={<LoginRegister />} />
 

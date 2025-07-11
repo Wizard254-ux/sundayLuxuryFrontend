@@ -45,7 +45,7 @@ const Hero = () => {
     if (!isPaused) {
       intervalRef.current = setInterval(() => {
         setCurrent((prev) => (prev + 1) % slides.length);
-      }, 3000);
+      }, 500000);
     }
 
     return () => clearInterval(intervalRef.current);
@@ -70,7 +70,7 @@ const Hero = () => {
         className="hero-image"
       />
       <div className="hero-text">
-        <h1>{slides[current].heading}</h1>
+        <h1 className="text-3xl lg:text-4xl font-bold font-serif text-blue-500">{slides[current].heading}</h1>
         <p>{slides[current].subtext}</p>
       </div>
     </div>

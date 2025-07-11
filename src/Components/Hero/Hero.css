@@ -32,12 +32,16 @@
   font-size: 3rem;
   margin-bottom: 1rem;
   line-height: 1.2;
+  color: #d4af37;
+  text-shadow: 2px 2px 4px rgba(44, 24, 16, 0.8);
 }
 
 /* === Subtext === */
 .hero-text p {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
+  color: #f8f4f0;
+  text-shadow: 1px 1px 3px rgba(44, 24, 16, 0.7);
 }
 
 /* === Fade Animation === */

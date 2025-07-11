@@ -52,76 +52,109 @@ const Description = () => {
     <>
       <Navbar />
       <div className="description-container pb-5">
-        {service.images && service.images.length > 0 && (
-          <div className="w-full max-w-6xl mx-auto mb-8 px-2 pt-2">
-            <div className="relative w-full h-96 md:h-[500px]  overflow-hidden rounded-xl shadow-2xl">
-              <img
-                src={service.images[currentImageIndex]}
-                alt={`${service.title} - Image ${currentImageIndex + 1}`}
-                className="w-full h-full object-cover transition-opacity duration-300 "
-                onError={(e) => (e.target.src = '')}
-              />
+        <div className="w-full max-w-7xl mx-auto px-4 pt-4">
+          {/* Main content container - side by side layout */}
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
 
-              {service.images.length > 1 && (
-                <>
-                  <button
-                    className="absolute top-1/2 left-4 transform -translate-y-1/2  bg-black/50 hover:bg-opacity-80 text-white border-none w-12 h-12 md:w-14 md:h-14 rounded-full cursor-pointer flex items-center justify-center transition-all duration-300 hover:scale-110 z-10"
-                    onClick={prevImage}
-                    aria-label="Previous image"
-                  >
-                    <ChevronLeft size={24} />
-                  </button>
-
-                  <button
-                    className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black/50 hover:bg-opacity-80 text-white border-none w-12 h-12 md:w-14 md:h-14 rounded-full cursor-pointer flex items-center justify-center transition-all duration-300 hover:scale-110 z-10"
-                    onClick={nextImage}
-                    aria-label="Next image"
-                  >
-                    <ChevronRight size={24} />
-                  </button>
-                </>
-              )}
-            </div>
-
-            {service.images.length > 1 && (
-              <div className="flex justify-center gap-2 mt-4">
-                {service.images.map((_, index) => (
-                  <button
-                    key={index}
-                    className={`w-3 h-3 rounded-full border-none cursor-pointer transition-all duration-300 ${
-                      index === currentImageIndex 
-                        ? 'bg-blue-500 transform scale-125' 
-                        : 'bg-gray-300 hover:bg-gray-500'
-                    }`}
-                    onClick={() => goToImage(index)}
-                    aria-label={`Go to image ${index + 1}`}
+            {/* Left side - Image Gallery */}
+            {service.images && service.images.length > 0 && (
+              <div className="w-full lg:w-1/3 lg:sticky lg:top-4 py-4 lg:self-start">
+                <div className="relative w-full h-96 rounded-5 md:h-[500px] lg:h-600px] overflow-hidden rounded-xl shadow-2xl bg-gray-100">
+                  <img
+                    src={service.images[currentImageIndex]}
+                    alt={`${service.title} - Image ${currentImageIndex + 1}`}
+                    className="w-full h-full md:object-cover object-fit rounded-5 transition-opacity duration-300"
+                    onError={(e) => (e.target.src = '')}
                   />
-                ))}
+
+                  {service.images.length > 1 && (
+                    <>
+                      <button
+                        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black/50 hover:bg-opacity-80 text-white border-none w-12 h-12 md:w-14 md:h-14 rounded-full cursor-pointer flex items-center justify-center transition-all duration-300 hover:scale-110 z-10"
+                        onClick={prevImage}
+                        aria-label="Previous image"
+                      >
+                        <ChevronLeft size={24} />
+                      </button>
+
+                      <button
+                        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black/50 hover:bg-opacity-80 text-white border-none w-12 h-12 md:w-14 md:h-14 rounded-full cursor-pointer flex items-center justify-center transition-all duration-300 hover:scale-110 z-10"
+                        onClick={nextImage}
+                        aria-label="Next image"
+                      >
+                        <ChevronRight size={24} />
+                      </button>
+                    </>
+                  )}
+                </div>
+
+                {/* Image dots indicator */}
+                {service.images.length > 1 && (
+                  <div className="flex justify-center gap-2 mt-4">
+                    {service.images.map((_, index) => (
+                      <button
+                        key={index}
+                        className={`w-3 h-3 rounded-full border-none cursor-pointer transition-all duration-300 ${
+                          index === currentImageIndex 
+                            ? 'bg-blue-500 transform scale-125' 
+                            : 'bg-gray-300 hover:bg-gray-500'
+                        }`}
+                        onClick={() => goToImage(index)}
+                        aria-label={`Go to image ${index + 1}`}
+                      />
+                    ))}
+                  </div>
+                )}
               </div>
             )}
-          </div>
-        )}
 
-        <div className="description-content px-4 max-w-6xl mx-auto">
-          <h1>{service.title}</h1>
-          <p>{service.description}</p>
+            {/* Right side - Service Details */}
+            <div className="w-full lg:w-1/2">
+              <div className="description-content py-5">
+                <h1 className="text-3xl lg:text-4xl font-bold font-serif mb-6">{service.title}</h1>
 
-          {service.products?.length > 0 && (
-            <div className="description-section">
-              <h2>Products Used</h2>
-              <ul>{service.products.map((p, i) => <li key={i}>{p}</li>)}</ul>
+                <div className="mb-8">
+                  <p className="text-lg text-gray-700 leading-relaxed">{service.description}</p>
+                </div>
+
+                {/* Price section */}
+                <div className="service-footer mb-8">
+                  <span className="text-2xl font-bold text-green-600">Price: KES {service.price}</span>
+                </div>
+
+                {/* Products Used */}
+                {service.products?.length > 0 && (
+                  <div className="description-section mb-8">
+                    <h2 className="text-xl font-semibold mb-4 text-gray-800">Products Used</h2>
+                    <ul className="space-y-2">
+                      {service.products.map((p, i) => (
+                        <li key={i} className="text-gray-700 flex items-start">
+                          <span className="text-blue-500 mr-2">•</span>
+                          {p}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {/* Benefits */}
+                {service.benefits?.length > 0 && (
+                  <div className="description-section mb-8">
+                    <h2 className="text-xl font-semibold mb-4 text-gray-800">Benefits</h2>
+                    <ul className="space-y-2">
+                      {service.benefits.map((b, i) => (
+                        <li key={i} className="text-gray-700 flex items-start">
+                          <span className="text-green-500 mr-2">✓</span>
+                          {b}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+
+              </div>
             </div>
-          )}
-
-          {service.benefits?.length > 0 && (
-            <div className="description-section">
-              <h2>Benefits</h2>
-              <ul>{service.benefits.map((b, i) => <li key={i}>{b}</li>)}</ul>
-            </div>
-          )}
-
-          <div className="service-footer ">
-            <span>Price: KES {service.price}</span>
           </div>
         </div>
       </div>

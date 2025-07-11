@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Services.css';
 import { Link } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
+import Footer from '../Footer/Footer';
 import axios from 'axios';
 
 const Services = ({ showAll = true }) => {
@@ -114,6 +115,7 @@ const Services = ({ showAll = true }) => {
           </div>
         )}
       </section>
+      {showAll && <Footer />}
     </>
   );
 };

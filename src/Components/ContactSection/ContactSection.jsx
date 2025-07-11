@@ -1,6 +1,17 @@
 import React from 'react';
 import './ContactSection.css';
-import { useNavigate } from 'react-router-dom'; // 👈 Import useNavigate
+import { useNavigate } from 'react-router-dom';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
+
+// Fix for default markers
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
+  iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+});
 
 const ContactSection = () => {
   const navigate = useNavigate(); // 👈 Initialize the navigator
@@ -55,6 +66,26 @@ const ContactSection = () => {
             </div>
           </div>
         </div>
+      </div>
+      
+      <div className="map-container">
+        <h2>Find Us Here</h2>
+        <MapContainer 
+          center={[-1.2921, 36.7853]} 
+          zoom={15} 
+          style={{ height: '400px', width: '100%' }}
+        >
+          <TileLayer
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          />
+          <Marker position={[-1.2921, 36.7853]}>
+            <Popup>
+              Sunday Luxury Spa & Salon<br />
+              @The Mugumo, Mwingi Road, Kileleshwa, Nairobi
+            </Popup>
+          </Marker>
+        </MapContainer>
       </div>
     </section>
   );

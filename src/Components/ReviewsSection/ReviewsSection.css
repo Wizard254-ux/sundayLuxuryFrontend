@@ -1,7 +1,7 @@
 /* ReviewsSection.css */
 .reviews-section {
   padding: 80px 20px;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: linear-gradient(135deg, #f8f4f0, #fff);
   min-height: 100vh;
 }
 
@@ -9,14 +9,14 @@
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 20px;
-  color: #2c3e50;
+  color: #2c1810;
   font-weight: 300;
 }
 
 .reviews-intro {
   text-align: center;
   font-size: 1.1rem;
-  color: #7f8c8d;
+  color: #6b5b47;
   margin-bottom: 40px;
   max-width: 600px;
   margin-left: auto;
@@ -44,23 +44,23 @@
 }
 
 .btn-primary {
-  background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #d4af37, #b8941f);
   color: white;
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
 }
 
 .btn-secondary {
   background: transparent;
-  color: #667eea;
-  border: 2px solid #667eea;
+  color: #d4af37;
+  border: 2px solid #d4af37;
 }
 
 .btn-secondary:hover {
-  background: #667eea;
+  background: #d4af37;
   color: white;
   transform: translateY(-2px);
 }
@@ -83,7 +83,7 @@
 
 .review-form-container h3 {
   text-align: center;
-  color: #2c3e50;
+  color: #2c1810;
   margin-bottom: 30px;
   font-size: 1.8rem;
   font-weight: 300;
@@ -103,7 +103,7 @@
 .form-group label {
   margin-bottom: 8px;
   font-weight: 500;
-  color: #34495e;
+  color: #2c1810;
   font-size: 1rem;
 }
 
@@ -122,9 +122,9 @@
 .form-group select:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: #d4af37;
   background: white;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
 }
 
 .form-group textarea {
@@ -198,22 +198,23 @@
 .review-text {
   font-size: 1.1rem;
   line-height: 1.6;
-  color: #34495e;
+  color: #6b5b47;
   margin-bottom: 20px;
   font-style: italic;
 }
 
 .review-name {
   font-weight: 600;
-  color: #2c3e50;
+  color: #2c1810;
   margin-bottom: 5px;
   font-size: 1.1rem;
 }
 
 .review-treatment {
-  color: #7f8c8d;
+  color: #d4af37;
   font-size: 0.9rem;
   margin-bottom: 10px;
+  font-weight: 500;
 }
 
 .review-date {

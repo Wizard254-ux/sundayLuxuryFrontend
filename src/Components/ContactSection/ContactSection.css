@@ -1,18 +1,18 @@
 .contact-section {
-  background-color: #fafafa;
+  background: linear-gradient(135deg, #f8f4f0, #fff);
   padding: 4rem 2rem;
   text-align: center;
 }
 
 .contact-header h1 {
   font-size: 2.5rem;
-  color: #2c3e50;
+  color: #2c1810;
   margin-bottom: 0.5rem;
 }
 
 .contact-header p {
   font-size: 1.1rem;
-  color: #555;
+  color: #6b5b47;
   max-width: 600px;
   margin: 0 auto 2.5rem;
 }
@@ -40,42 +40,46 @@
 
 .contact-information-card h2,
 .book-appointment-card h2 {
-  color: #1b4d3e; /* Jungle Greenish text */
+  color: #2c1810;
   margin-bottom: 1rem;
 }
 
 .contact-detail h3 {
   margin: 1rem 0 0.3rem;
   font-size: 1rem;
-  color: #333;
+  color: #d4af37;
+  font-weight: 600;
 }
 
 .contact-detail p {
   margin: 0.2rem 0;
-  color: #555;
+  color: #6b5b47;
 }
 
 /* === Book Appointment Card === */
 .book-appointment-card p {
   margin-bottom: 1rem;
-  color: #444;
+  color: #6b5b47;
   font-size: 1rem;
 }
 
 .book-appointment-button {
-  background-color: #1b4d3e;
+  background: linear-gradient(135deg, #d4af37, #b8941f);
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
   font-weight: 600;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
 }
 
 .book-appointment-button:hover {
-  background-color: #166c5f;
+  background: linear-gradient(135deg, #b8941f, #d4af37);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
 }
 
 /* === Stats Container === */
@@ -87,12 +91,12 @@
 
 .stat-item h3 {
   font-size: 1.5rem;
-  color: #2c3e50;
+  color: #d4af37;
 }
 
 .stat-item p {
   font-size: 0.95rem;
-  color: #777;
+  color: #6b5b47;
 }
 
 /* === Responsive === */
@@ -125,4 +129,23 @@
     flex-direction: column;
     align-items: center;
   }
+}
+
+/* === Map Container === */
+.map-container {
+  margin-top: 3rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.map-container h2 {
+  color: #2c1810;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.leaflet-container {
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
 }

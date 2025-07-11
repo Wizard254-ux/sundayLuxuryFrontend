@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Appointment.css';
 import Navbar from '../Navbar/Navbar';
+import Footer from '../Footer/Footer';
 import axios from 'axios';
 
 const Appointment = () => {
@@ -263,6 +264,7 @@ const Appointment = () => {
           </form>
         </div>
       </section>
+      <Footer />
     </>
   );
 };

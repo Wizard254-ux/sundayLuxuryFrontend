@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import './Navbar.css';
-import { FaBars, FaTimes, FaUser } from 'react-icons/fa'; // 👈 added FaUser
+import { FaBars, FaTimes, FaUser } from 'react-icons/fa';
 import logo from '../../assets/logo.jpeg';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -15,25 +16,8 @@ const Navbar = () => {
     setIsOpen(false);
   };
 
-  const handleNavigate = (path, hash = '') => {
-    if (path === '/' && !hash) {
-      // For home navigation, scroll to top
-      navigate('/');
-      setTimeout(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }, 100);
-    } else if (hash) {
-      // For hash navigation, navigate then scroll to section
-      navigate(`${path}${hash}`);
-      setTimeout(() => {
-        const element = document.getElementById(hash.substring(1));
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }, 100);
-    } else {
-      navigate(path);
-    }
+  const handleNavigate = (path) => {
+    navigate(path);
     setIsOpen(false);
   };
 
@@ -52,22 +36,22 @@ const Navbar = () => {
 
       <ul className={isOpen ? 'navbar-menu active' : 'navbar-menu'}>
         <li>
-          <a href="/" onClick={(e) => { e.preventDefault(); handleNavigate('/'); }}>
+          <a href="/" onClick={(e) => { e.preventDefault(); handleNavigate('/'); }} className={location.pathname === '/' ? 'active' : ''}>
             Home
           </a>
         </li>
         <li>
-          <a href="/services" onClick={(e) => { e.preventDefault(); handleNavigate('/services'); }}>
+          <a href="/services" onClick={(e) => { e.preventDefault(); handleNavigate('/services'); }} className={location.pathname === '/services' ? 'active' : ''}>
             Services
           </a>
         </li>
         <li>
-          <a href="/#reviews" onClick={(e) => { e.preventDefault(); handleNavigate('/', '#reviews'); }}>
+          <a href="/reviews" onClick={(e) => { e.preventDefault(); handleNavigate('/reviews'); }} className={location.pathname === '/reviews' ? 'active' : ''}>
             Reviews
           </a>
         </li>
         <li>
-          <a href="/#contact" onClick={(e) => { e.preventDefault(); handleNavigate('/', '#contact'); }}>
+          <a href="/contact" onClick={(e) => { e.preventDefault(); handleNavigate('/contact'); }} className={location.pathname === '/contact' ? 'active' : ''}>
             Contact
           </a>
         </li>
