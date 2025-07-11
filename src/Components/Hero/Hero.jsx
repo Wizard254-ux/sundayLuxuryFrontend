@@ -45,7 +45,7 @@ const Hero = () => {
     if (!isPaused) {
       intervalRef.current = setInterval(() => {
         setCurrent((prev) => (prev + 1) % slides.length);
-      }, 500000);
+      }, 50000);
     }
 
     return () => clearInterval(intervalRef.current);
