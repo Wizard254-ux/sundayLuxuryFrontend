@@ -68,7 +68,7 @@ const Services = ({ showAll = true }) => {
       {showAll && <Navbar />}
 
       <section className="services-section" id="services">
-        <h2>Our Signature Services</h2>
+        <h2 className="font-serif">Our Signature Services</h2>
         <p className="services-intro">
           Discover our curated treatments to nurture your body, mind, and spirit.
         </p>

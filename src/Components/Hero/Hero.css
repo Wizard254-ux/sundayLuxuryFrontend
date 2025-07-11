@@ -29,19 +29,25 @@
 
 /* === Headline Text === */
 .hero-text h1 {
-  font-size: 3rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  font-weight: 700;
   margin-bottom: 1rem;
-  line-height: 1.2;
+  line-height: 1.1;
   color: #d4af37;
   text-shadow: 2px 2px 4px rgba(44, 24, 16, 0.8);
+  letter-spacing: -0.02em;
 }
 
 /* === Subtext === */
 .hero-text p {
-  font-size: 1.2rem;
+  font-family: 'Lora', serif;
+  font-size: 1.3rem;
+  font-weight: 400;
   margin-bottom: 0.5rem;
   color: #f8f4f0;
   text-shadow: 1px 1px 3px rgba(44, 24, 16, 0.7);
+  letter-spacing: 0.5px;
 }
 
 /* === Fade Animation === */

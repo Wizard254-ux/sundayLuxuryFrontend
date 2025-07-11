@@ -9,7 +9,7 @@ const OurTeam = () => {
   const teamMembers = [
     {
       id: 1,
-      name: "Sarah Johnson",
+      name: "Joy",
       role: "Massage Therapist & Beautician",
       image: joyImage, // Use the imported image
       description: "Skilled in therapeutic massage and beauty treatments, specializing in holistic therapy and wellness practices."

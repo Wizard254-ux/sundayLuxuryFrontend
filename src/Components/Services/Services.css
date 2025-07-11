@@ -6,17 +6,23 @@
 }
 
 .services-section h2 {
-  font-size: 2.5rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  font-weight: 600;
   color: #d4af37;
   margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
 }
 
 .services-intro {
-  font-size: 1.1rem;
+  font-family: 'Lora', serif;
+  font-size: 1.2rem;
+  font-weight: 400;
   max-width: 600px;
   margin: 0 auto 2.5rem;
   color: #f8f4f0;
-  line-height: 1.6;
+  line-height: 1.7;
+  letter-spacing: 0.3px;
 }
 
 /* === Grid Layout === */
@@ -64,9 +70,12 @@
 }
 
 .service-content h3 {
+  font-family: 'Playfair Display', serif;
   margin-bottom: 0.5rem;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
+  font-weight: 600;
   color: #2c1810;
+  letter-spacing: -0.01em;
 }
 
 .service-content p {
