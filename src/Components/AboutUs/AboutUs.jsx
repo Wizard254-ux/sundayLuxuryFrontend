@@ -6,9 +6,9 @@ const AboutUs = () => {
     <section className="about-us" id="about">
       <div className="about-container">
         <div className="about-content">
-          <h2>About Sunday Luxury</h2>
+          <h2>About Sunday Luxury Spa...</h2>
           <p>
-            At Sunday Luxury Spa & Salon, we believe in providing an exceptional experience 
+            At Sunday Luxury Spa, we believe in providing an exceptional experience 
             that rejuvenates both body and mind. Our expert team is dedicated to delivering 
             personalized treatments in a serene and luxurious environment.
           </p>

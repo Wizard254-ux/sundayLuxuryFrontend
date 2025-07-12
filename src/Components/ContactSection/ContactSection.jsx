@@ -21,10 +21,12 @@ const ContactSection = () => {
   };
 
   return (
-<section className="contact-section" id="contact">
+    <section className="contact-section" id="contact">
       <div className="contact-header">
         <h1>Visit Our Sanctuary</h1>
-        <p>Ready to begin your journey to wellness? Book your appointment today</p>
+        <p>
+          Ready to begin your journey to wellness? Book your appointment today
+        </p>
       </div>
 
       <div className="contact-content">
@@ -43,14 +45,15 @@ const ContactSection = () => {
             <p>Monday - Friday : 9:00 AM - 9:00 PM</p>
             <p>Saturday : 8:30 AM - 9:00 PM</p>
             <p>Sunday: 10:00 AM - 8:30 PM</p>
-
           </div>
-  
         </div>
 
         <div className="book-appointment-card">
           <h2>Ready to Experience Serenity?</h2>
-          <p>Book your personalized spa experience today and discover the perfect balance of luxury and wellness.</p>
+          <p>
+            Book your personalized spa experience today and discover the perfect
+            balance of luxury and wellness.
+          </p>
           <button className="book-appointment-button" onClick={handleBookClick}>
             Book Your Appointment
           </button>
@@ -67,21 +70,22 @@ const ContactSection = () => {
           </div>
         </div>
       </div>
-      
+
       <div className="map-container">
         <h2>Find Us Here</h2>
-        <MapContainer 
-          center={[-1.2921, 36.7853]} 
-          zoom={15} 
-          style={{ height: '400px', width: '100%' }}
+        <MapContainer
+          center={[-1.2823, 36.7821]}
+          zoom={30}
+          style={{ height: "400px", width: "100%" }}
         >
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           />
-          <Marker position={[-1.2921, 36.7853]}>
+          <Marker position={[-1.2823, 36.7821]}>
             <Popup>
-              Sunday Luxury Spa & Salon<br />
+              Sunday Luxury Spa & Salon
+              <br />
               @The Mugumo, Mwingi Road, Kileleshwa, Nairobi
             </Popup>
           </Marker>

@@ -1,23 +1,36 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './Appointment.css';
-import Navbar from '../Navbar/Navbar';
-import Footer from '../Footer/Footer';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Appointment.css";
+import Navbar from "../Navbar/Navbar";
+import Footer from "../Footer/Footer";
+import axios from "axios";
 
 const Appointment = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    name: '',
-    phone: '+254',
-    email: '',
+    name: "",
+    phone: "+254",
+    email: "",
     service: [],
-    date: '',
-    time: '',
+    date: "",
+    time: "",
   });
 
   const [openDropdowns, setOpenDropdowns] = useState({});
+  const [showWorkingHoursModal, setShowWorkingHoursModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
+
+  // Working hours definition
+  const workingHours = {
+    monday: { start: "09:00", end: "21:00" },
+    tuesday: { start: "09:00", end: "21:00" },
+    wednesday: { start: "09:00", end: "21:00" },
+    thursday: { start: "09:00", end: "21:00" },
+    friday: { start: "09:00", end: "21:00" },
+    saturday: { start: "08:30", end: "21:00" },
+    sunday: { start: "10:00", end: "20:30" },
+  };
 
   // Service categories from the image
   const serviceCategories = {
@@ -28,23 +41,23 @@ const Appointment = () => {
         { name: "Beard", price: 500 },
         { name: "Adults", price: 1000 },
         { name: "Hair+Dye", price: 1500 },
-        { name: "Texturizer", price: 1500 }
-      ]
+        { name: "Texturizer", price: 1500 },
+      ],
     },
     hairDyes: {
       title: "Hair Dyes",
       services: [
         { name: "Colored", price: 2500 },
         { name: "White", price: 3000 },
-        { name: "Platinum", price: 3000 }
-      ]
+        { name: "Platinum", price: 3000 },
+      ],
     },
     mensPedicure: {
       title: "Men's Pedicure",
       services: [
         { name: "Cut & File", price: 600 },
-        { name: "Full Pedicure", price: 2000 }
-      ]
+        { name: "Full Pedicure", price: 2000 },
+      ],
     },
     womensPedicureNails: {
       title: "Women's Pedicure & Nails",
@@ -57,8 +70,8 @@ const Appointment = () => {
         { name: "Gum Gel", price: 4000 },
         { name: "Tips & Gel", price: 2000 },
         { name: "Stick'ons", price: 1500 },
-        { name: "Art (per finger)", price: 100 }
-      ]
+        { name: "Art (per finger)", price: 100 },
+      ],
     },
     massage: {
       title: "Massage (Men & Women)",
@@ -74,8 +87,8 @@ const Appointment = () => {
         { name: "Relaxation Massage - 60mins", price: 3500 },
         { name: "Hotstone Massage - 20mins", price: 3500 },
         { name: "Hotstone Massage - 30mins", price: 4500 },
-        { name: "Hotstone Massage - 40mins", price: 6500 }
-      ]
+        { name: "Hotstone Massage - 40mins", price: 6500 },
+      ],
     },
     facials: {
       title: "Facials",
@@ -84,9 +97,71 @@ const Appointment = () => {
         { name: "Face Steaming", price: 2000 },
         { name: "Scrub & Face Mask", price: 2000 },
         { name: "Regular Facial", price: 3000 },
-        { name: "Advanced Facial", price: 3500 }
-      ]
-    }
+        { name: "Advanced Facial", price: 3500 },
+      ],
+    },
+  };
+
+  // Function to get day of week from date
+  const getDayOfWeek = (dateString) => {
+    const date = new Date(dateString);
+    const days = [
+      "sunday",
+      "monday",
+      "tuesday",
+      "wednesday",
+      "thursday",
+      "friday",
+      "saturday",
+    ];
+    return days[date.getDay()];
+  };
+
+  // Function to validate time within working hours
+  const isTimeWithinWorkingHours = (date, time) => {
+    if (!date || !time) return true; // Don't validate if either is empty
+
+    const dayOfWeek = getDayOfWeek(date);
+    const hours = workingHours[dayOfWeek];
+
+    if (!hours) return false;
+
+    return time >= hours.start && time <= hours.end;
+  };
+
+  // Function to get working hours display text
+  const getWorkingHoursText = (date) => {
+    if (!date) return "";
+
+    const dayOfWeek = getDayOfWeek(date);
+    const hours = workingHours[dayOfWeek];
+
+    if (!hours) return "";
+
+    const formatTime = (time) => {
+      const [hour, minute] = time.split(":");
+      const hourInt = parseInt(hour);
+      const ampm = hourInt >= 12 ? "PM" : "AM";
+      const displayHour =
+        hourInt > 12 ? hourInt - 12 : hourInt === 0 ? 12 : hourInt;
+      return `${displayHour}:${minute} ${ampm}`;
+    };
+
+    const dayName = dayOfWeek.charAt(0).toUpperCase() + dayOfWeek.slice(1);
+    return `${dayName}: ${formatTime(hours.start)} - ${formatTime(hours.end)}`;
+  };
+
+  // Function to show working hours modal
+  const showWorkingHoursError = (date) => {
+    const hoursText = getWorkingHoursText(date);
+    setModalMessage(hoursText);
+    setShowWorkingHoursModal(true);
+  };
+
+  // Function to close modal
+  const closeModal = () => {
+    setShowWorkingHoursModal(false);
+    setModalMessage("");
   };
 
   // useEffect(() => {
@@ -100,21 +175,38 @@ const Appointment = () => {
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
 
-    if (name === 'service') {
+    if (name === "service") {
       setFormData((prev) => ({
         ...prev,
         service: checked
           ? [...prev.service, value]
           : prev.service.filter((s) => s !== value),
       }));
-    } else if (name === 'phone') {
+    } else if (name === "phone") {
       let phone = value;
-      if (!phone.startsWith('+254')) {
-        phone = '+254' + phone.replace(/^\+?254|^0/, '');
+      if (!phone.startsWith("+254")) {
+        phone = "+254" + phone.replace(/^\+?254|^0/, "");
       }
       setFormData((prev) => ({
         ...prev,
         phone,
+      }));
+    } else if (name === "time") {
+      // Validate time when it changes
+      if (formData.date && !isTimeWithinWorkingHours(formData.date, value)) {
+        showWorkingHoursError(formData.date);
+        return;
+      }
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    } else if (name === "date") {
+      // Clear time when date changes to avoid conflicts
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+        time: "", // Clear time when date changes
       }));
     } else {
       setFormData((prev) => ({
@@ -125,9 +217,9 @@ const Appointment = () => {
   };
 
   const toggleDropdown = (category) => {
-    setOpenDropdowns(prev => ({
+    setOpenDropdowns((prev) => ({
       ...prev,
-      [category]: !prev[category]
+      [category]: !prev[category],
     }));
   };
 
@@ -137,27 +229,39 @@ const Appointment = () => {
     const { name, phone, email, service, date, time } = formData;
 
     if (!name || !phone || !email || !service.length || !date || !time) {
-      alert('All fields are required.');
+      alert("All fields are required.");
       return;
     }
 
     // Updated regex to allow both +2547 and +2541 prefixes
     if (!/^\+254[17]\d{8}$/.test(phone)) {
-      alert('Phone number must be in format +2547XXXXXXXX or +2541XXXXXXXX');
+      alert("Phone number must be in format +2547XXXXXXXX or +2541XXXXXXXX");
+      return;
+    }
+
+    // Final validation for working hours
+    if (!isTimeWithinWorkingHours(date, time)) {
+      showWorkingHoursError(date);
       return;
     }
 
     try {
-      await axios.post('https://sundayluxury.onrender.com/appointments', formData, {
-        headers: {
-        },
-      });
+      await axios.post(
+        "https://sundayluxury.onrender.com/appointments",
+        formData,
+        {
+          headers: {},
+        }
+      );
 
-      alert('Appointment booked successfully!');
-      navigate('/');
+      alert("Appointment booked successfully!");
+      navigate("/");
     } catch (error) {
-      console.error('Error booking appointment:', error.response?.data || error.message);
-      alert('Something went wrong. Please try again.');
+      console.error(
+        "Error booking appointment:",
+        error.response?.data || error.message
+      );
+      alert("Something went wrong. Please try again.");
     }
   };
 
@@ -165,8 +269,8 @@ const Appointment = () => {
   const maxDate = new Date(today);
   maxDate.setDate(today.getDate() + 6);
 
-  const minDateStr = today.toISOString().split('T')[0];
-  const maxDateStr = maxDate.toISOString().split('T')[0];
+  const minDateStr = today.toISOString().split("T")[0];
+  const maxDateStr = maxDate.toISOString().split("T")[0];
 
   return (
     <>
@@ -209,40 +313,51 @@ const Appointment = () => {
                   </div>
                 )}
               </div>
-              
-              {Object.entries(serviceCategories).map(([categoryKey, category]) => (
-                <div key={categoryKey} className="service-category">
-                  <div 
-                    className="category-header" 
-                    onClick={() => toggleDropdown(categoryKey)}
-                  >
-                    <h4>{category.title}</h4>
-                    <span className={`dropdown-arrow ${openDropdowns[categoryKey] ? 'open' : ''}`}>
-                      ▼
-                    </span>
-                  </div>
-                  
-                  {openDropdowns[categoryKey] && (
-                    <div className="service-options">
-                      {category.services.map((service, index) => (
-                        <label key={index} className="service-item">
-                          <input 
-                            type="checkbox" 
-                            name="service" 
-                            value={`${service.name} - KSh ${service.price}`}
-                            checked={formData.service.includes(`${service.name} - KSh ${service.price}`)}
-                            onChange={handleChange} 
-                          />
-                          <span className="service-name">{service.name}</span>
-                          <span className="service-price">KSh {service.price}</span>
-                        </label>
-                      ))}
+
+              {Object.entries(serviceCategories).map(
+                ([categoryKey, category]) => (
+                  <div key={categoryKey} className="service-category">
+                    <div
+                      className="category-header"
+                      onClick={() => toggleDropdown(categoryKey)}
+                    >
+                      <h4>{category.title}</h4>
+                      <span
+                        className={`dropdown-arrow ${
+                          openDropdowns[categoryKey] ? "open" : ""
+                        }`}
+                      >
+                        ▼
+                      </span>
                     </div>
-                  )}
-                </div>
-              ))}
+
+                    {openDropdowns[categoryKey] && (
+                      <div className="service-options">
+                        {category.services.map((service, index) => (
+                          <label key={index} className="service-item">
+                            <input
+                              type="checkbox"
+                              name="service"
+                              value={`${service.name} - KSh ${service.price}`}
+                              checked={formData.service.includes(
+                                `${service.name} - KSh ${service.price}`
+                              )}
+                              onChange={handleChange}
+                            />
+                            <span className="service-name">{service.name}</span>
+                            <span className="service-price">
+                              KSh {service.price}
+                            </span>
+                          </label>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )
+              )}
             </div>
-             <span className="ml-2">Date</span>
+
+            <span className="ml-2">Date</span>
             <input
               type="date"
               name="date"
@@ -252,7 +367,13 @@ const Appointment = () => {
               value={formData.date}
               onChange={handleChange}
             />
+
             <span className="ml-2">Time</span>
+            {formData.date && (
+              <div className="working-hours-info">
+                Working hours: {getWorkingHoursText(formData.date)}
+              </div>
+            )}
             <input
               type="time"
               name="time"
@@ -264,6 +385,29 @@ const Appointment = () => {
           </form>
         </div>
       </section>
+
+      {/* Working Hours Modal */}
+      {showWorkingHoursModal && (
+        <div className="working-hours-modal" onClick={closeModal}>
+          <div
+            className="working-hours-modal-content"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="working-hours-modal-icon">🕐</div>
+            <h3 className="working-hours-modal-title">
+              Oops! Time Not Available
+            </h3>
+            <p className="working-hours-modal-message">
+              Selected time is not within our working hours.
+            </p>
+            <div className="working-hours-modal-hours">{modalMessage}</div>
+            <button className="working-hours-modal-button" onClick={closeModal}>
+              Select New Time
+            </button>
+          </div>
+        </div>
+      )}
+
       <Footer />
     </>
   );

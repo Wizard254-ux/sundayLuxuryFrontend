@@ -29,7 +29,7 @@ const Footer = () => {
           </div>
 
           <div className="contact-item">
-            <FaMapMarkerAlt /> <span>@The Mugumo, Mwingi Road,<br></br> kileleshwa, Nairobi</span>
+            <FaMapMarkerAlt /> <span>@The Mugumo, Mwingi Road,<br></br> Kileleshwa, Nairobi</span>
           </div>
         </div>
         

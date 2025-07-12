@@ -1,4 +1,4 @@
-        .service-selection {
+.service-selection {
           margin: 20px 0;
         }
 
@@ -144,6 +144,109 @@
           box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
         }
 
+        /* Working Hours Modal Styles */
+        .working-hours-modal {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.5);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          z-index: 1000;
+          animation: fadeIn 0.3s ease;
+        }
+
+        .working-hours-modal-content {
+          background: white;
+          padding: 30px;
+          border-radius: 16px;
+          max-width: 400px;
+          width: 90%;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+          text-align: center;
+          animation: slideIn 0.3s ease;
+        }
+
+        .working-hours-modal-icon {
+          font-size: 48px;
+          margin-bottom: 20px;
+        }
+
+        .working-hours-modal-title {
+          font-size: 20px;
+          font-weight: 700;
+          color: #2c1810;
+          margin-bottom: 15px;
+        }
+
+        .working-hours-modal-message {
+          font-size: 16px;
+          color: #666;
+          margin-bottom: 20px;
+          line-height: 1.5;
+        }
+
+        .working-hours-modal-hours {
+          background: #f8f9fa;
+          padding: 15px;
+          border-radius: 8px;
+          margin-bottom: 25px;
+          font-weight: 600;
+          color: #d4af37;
+        }
+
+        .working-hours-modal-button {
+          background: linear-gradient(135deg, #d4af37, #b8941f);
+          color: white;
+          border: none;
+          padding: 12px 30px;
+          border-radius: 8px;
+          font-size: 16px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .working-hours-modal-button:hover {
+          background: linear-gradient(135deg, #b8941f, #d4af37);
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .working-hours-info {
+          font-size: 0.9em;
+          color: #666;
+          margin-bottom: 5px;
+          padding: 8px 12px;
+          background: #f8f9fa;
+          border-radius: 6px;
+          border-left: 4px solid #d4af37;
+        }
+
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+        @keyframes slideIn {
+          from {
+            transform: translateY(-50px);
+            opacity: 0;
+          }
+          to {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+
         @media (max-width: 768px) {
           .service-category {
             margin-bottom: 15px;
@@ -209,5 +312,36 @@
             color: #1976d2;
             border-radius: 8px;
             font-weight: 600;
+          }
+
+          .working-hours-modal-content {
+            padding: 25px;
+            max-width: 350px;
+          }
+
+          .working-hours-modal-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+          }
+
+          .working-hours-modal-title {
+            font-size: 18px;
+            margin-bottom: 12px;
+          }
+
+          .working-hours-modal-message {
+            font-size: 15px;
+            margin-bottom: 15px;
+          }
+
+          .working-hours-modal-hours {
+            padding: 12px;
+            margin-bottom: 20px;
+            font-size: 14px;
+          }
+
+          .working-hours-modal-button {
+            padding: 10px 25px;
+            font-size: 15px;
           }
         }
