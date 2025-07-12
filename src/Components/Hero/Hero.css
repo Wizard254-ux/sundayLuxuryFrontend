@@ -165,7 +165,7 @@
 /* === Responsive Media Queries === */
 @media (max-width: 1024px) {
   .hero-text h1 {
-    font-size: 2.4rem;
+    font-size: 60px; /* Slightly smaller for tablets */
   }
 
   .hero-text p {
@@ -189,7 +189,7 @@
 
 @media (max-width: 768px) {
   .hero-text h1 {
-    font-size: 2rem;
+    font-size: 48px; /* Balanced for mobile landscape */
   }
 
   .hero-text p {
@@ -222,7 +222,7 @@
 
 @media (max-width: 480px) {
   .hero-text h1 {
-    font-size: 1.6rem;
+    font-size: 56px; /* Clear and readable on small screens */
   }
 
   .hero-text p {

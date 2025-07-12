@@ -34,7 +34,7 @@ const ContactSection = () => {
           <h2>Contact Information</h2>
           <div className="contact-detail">
             <h3>Address</h3>
-            <p>@The Mugumo, Mwingi Road, kileleshwa, Nairobi</p>
+            <p>@The Mugumo, Mwingi Road, Kileleshwa, Nairobi</p>
           </div>
           <div className="contact-detail">
             <h3>Phone</h3>
