@@ -72,7 +72,7 @@ const Footer = () => {
       </div>
 
       <div className="footer-bottom">
-        <p>&copy; 2024 Sunday Luxury. All rights reserved.</p>
+        <p>&copy; 2024 Sunday Luxury Spa. All rights reserved.</p>
       </div>
     </footer>
   );
