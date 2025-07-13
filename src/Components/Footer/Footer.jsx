@@ -8,7 +8,7 @@ import {
   FaEnvelope,
   FaMapMarkerAlt,
   FaTiktok,
-  FaemailVoic
+  FaVoicemail,
 } from "react-icons/fa";
 import logo from '../../assets/logo.jpeg';
 
@@ -51,7 +51,7 @@ const Footer = () => {
             <FaPhone /> <span>+254725288288</span>
           </div>
           <div className="contact-item">
-            <FaemailVoic /> <span>Enquiries@sundayluxuryspa.com</span>
+            <FaVoicemail /> <span>Enquiries@sundayluxuryspa.com</span>
           </div>
 
           <div className="contact-item">
