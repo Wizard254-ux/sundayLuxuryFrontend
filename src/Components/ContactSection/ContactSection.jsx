@@ -41,7 +41,7 @@ const ContactSection = () => {
             <p>+254707697930</p>
             <p>+254721494070</p>
             <p>+254725288288</p>
-            
+
             <h3>Email </h3>
             <p>Enquiries@sundayluxuryspa.com</p>
           </div>
@@ -62,17 +62,6 @@ const ContactSection = () => {
           <button className="book-appointment-button" onClick={handleBookClick}>
             Book Your Appointment
           </button>
-
-          <div className="stats-container">
-            <div className="stat-item">
-              <h3>500+</h3>
-              <p>Happy Clients</p>
-            </div>
-            <div className="stat-item">
-              <h3>5 Years</h3>
-              <p>Experience</p>
-            </div>
-          </div>
         </div>
       </div>
 
