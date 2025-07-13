@@ -61,10 +61,7 @@ const Footer = () => {
         <div className="footer-section">
           <h3>Follow Us</h3>
           <div className="social-links">
-            <a href="#">
-              <FaFacebook />
-            </a>
-            <a href="#">
+            <a href="https://www.instagram.com/sundays_luxury_spa">
               <FaInstagram />
             </a>
             <a href="https://www.tiktok.com/@sundayspa2025?_t=ZM-8xySl6zYGGc&_r=1">
