@@ -13,7 +13,7 @@
 
 /* === Services Section === */
 .services-section {
-  padding: 0.5rem 0.1rem;
+  padding: 3px 1px;
   background: #f8f4f0;
   text-align: center;
 }
@@ -40,6 +40,7 @@
 
 /* === Grid Layout === */
 .services-grid {
+  margin-top: 1px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
