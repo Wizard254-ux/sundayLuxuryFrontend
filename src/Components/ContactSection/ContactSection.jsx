@@ -38,6 +38,8 @@ const ContactSection = () => {
           </div>
           <div className="contact-detail">
             <h3>Phone</h3>
+            <p>+254707697930</p>
+            <p>+254721494070</p>
             <p>+254725288288</p>
           </div>
           <div className="contact-detail">
