@@ -41,6 +41,9 @@ const ContactSection = () => {
             <p>+254707697930</p>
             <p>+254721494070</p>
             <p>+254725288288</p>
+            
+            <h3>Email </h3>
+            <p>Enquiries@sundayluxuryspa.com</p>
           </div>
           <div className="contact-detail">
             <h3>Opening Hours</h3>
