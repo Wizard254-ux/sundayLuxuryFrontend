@@ -21,10 +21,7 @@ const Navbar = () => {
     setIsOpen(false);
   };
 
-  const handleUserIconClick = () => {
-    navigate('/login');
-    setIsOpen(false);
-  };
+
 
   return (
     <nav className="navbar">
@@ -64,9 +61,7 @@ const Navbar = () => {
         <div className="navbar-book-desktop">
           <button onClick={handleBookNow}>Book Now</button>
         </div>
-        <div className="navbar-user-icon" onClick={handleUserIconClick}>
-          <FaUser size={22} />
-        </div>
+   
         <div className="navbar-toggle" onClick={toggleMenu}>
           {isOpen ? <FaTimes /> : <FaBars />}
         </div>
