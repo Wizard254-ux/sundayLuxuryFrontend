@@ -5,7 +5,7 @@ import LandingPage from './Components/LandingPage/LandingPage';
 import Services from './Components/Services/Services';
 import Description from './Components/Description/Description';
 import Appointment from './Components/Appointment/Appointment';
-import LoginRegister from './Components/LoginRegister/LoginRegister';
+import NotFound from './Components/NotFound';
 import ReviewsPage from './Components/ReviewsPage/ReviewsPage';
 import ContactPage from './Components/ContactPage/ContactPage';
 import './index.css'; // Ensure you have Tailwind CSS set up correctly
@@ -52,7 +52,7 @@ function App() {
         <Route path="/reviews" element={<ReviewsPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/description/:id" element={<Description />} />
-        <Route path="/login" element={<LoginRegister />} />
+        <Route path="*" element={<NotFound />} />
 
         {/* Admin login — always open */}
         <Route path="/admin" element={<AdminLogin />} />
