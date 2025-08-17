@@ -27,7 +27,7 @@ function App() {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const res = await axios.get('https://sundayluxury.onrender.com/health/check');
+        const res = await axios.post('https://sundayluxury.onrender.com/health/check',{data:"health check"});
         console.log('Health check:', res.data);
       } catch (error) {
         console.error('Error Health:', error);
